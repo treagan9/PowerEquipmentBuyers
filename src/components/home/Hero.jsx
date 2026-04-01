@@ -10,20 +10,37 @@ function Hero() {
     <Box
       position="relative"
       overflow="hidden"
-      pt={{ base: 28, md: 40 }}
-      pb={{ base: 16, md: 24 }}
-      bg="white"
+      pt={{ base: 32, md: 44 }}
+      pb={{ base: 20, md: 32 }}
+      minH={{ base: 'auto', md: '85vh' }}
+      display="flex"
+      alignItems="center"
     >
-      {/* Subtle gradient accent */}
+      {/* Background image */}
       <Box
         position="absolute"
-        top="-30%"
-        right="-15%"
-        w="60vw"
-        h="60vw"
-        maxW="800px"
-        maxH="800px"
-        bg="radial-gradient(circle, rgba(30, 64, 175, 0.04) 0%, transparent 60%)"
+        inset={0}
+        backgroundImage="url('/hero-substation.png')"
+        backgroundSize="cover"
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat"
+      />
+
+      {/* Dark gradient overlay */}
+      <Box
+        position="absolute"
+        inset={0}
+        bg="linear-gradient(135deg, rgba(8, 12, 22, 0.92) 0%, rgba(8, 12, 22, 0.75) 50%, rgba(8, 12, 22, 0.6) 100%)"
+      />
+
+      {/* Bottom fade to white (smooth transition to next section) */}
+      <Box
+        position="absolute"
+        bottom={0}
+        left={0}
+        right={0}
+        h="120px"
+        bg="linear-gradient(to bottom, transparent, rgba(8, 12, 22, 0.95))"
         pointerEvents="none"
       />
 
@@ -33,17 +50,18 @@ function Hero() {
           {/* Nationwide badge */}
           <HStack
             spacing={2}
-            bg="brand.accentSoft"
+            bg="whiteAlpha.100"
             border="1px solid"
-            borderColor="brand.accentBorder"
+            borderColor="whiteAlpha.200"
             borderRadius="full"
             px={3.5}
             py={1}
             mb={7}
             w="fit-content"
+            backdropFilter="blur(8px)"
           >
-            <Icon as={HiGlobe} boxSize={3.5} color="brand.accent" />
-            <Text fontSize="11px" fontWeight="600" color="brand.accent" letterSpacing="0.01em">
+            <Icon as={HiGlobe} boxSize={3.5} color="brand.accentLight" />
+            <Text fontSize="11px" fontWeight="600" color="whiteAlpha.900" letterSpacing="0.01em">
               Serving all 50 states
             </Text>
           </HStack>
@@ -55,7 +73,7 @@ function Hero() {
             fontWeight="800"
             lineHeight="1.08"
             letterSpacing="-0.035em"
-            color="brand.gray900"
+            color="white"
             mb={6}
           >
             Sell Your Transformers{' '}
@@ -65,7 +83,7 @@ function Hero() {
 
           <Text
             fontSize={{ base: 'md', md: 'lg' }}
-            color="brand.gray500"
+            color="whiteAlpha.800"
             lineHeight="1.75"
             maxW="540px"
             mb={9}
@@ -77,19 +95,41 @@ function Hero() {
 
           <Flex gap={3} direction={{ base: 'column', sm: 'row' }}>
             <Button
-              variant="primary"
+              bg="white"
+              color="brand.accent"
               size="lg"
               rightIcon={<HiArrowRight />}
               onClick={() => navigate('/contact/')}
               px={7}
+              fontFamily="heading"
+              fontWeight="700"
+              _hover={{
+                bg: 'brand.gray100',
+                transform: 'translateY(-1px)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+              }}
+              _active={{ transform: 'translateY(0)' }}
+              transition="all 0.2s"
             >
               Get Your Offer
             </Button>
             <Button
-              variant="outline"
+              variant="unstyled"
               size="lg"
-              onClick={() => navigate('/contact/')}
+              color="white"
+              border="1.5px solid"
+              borderColor="whiteAlpha.400"
               px={7}
+              fontFamily="heading"
+              fontWeight="600"
+              display="flex"
+              alignItems="center"
+              onClick={() => navigate('/contact/')}
+              _hover={{
+                bg: 'whiteAlpha.100',
+                borderColor: 'whiteAlpha.600'
+              }}
+              transition="all 0.2s"
             >
               Upload Equipment Photos
             </Button>

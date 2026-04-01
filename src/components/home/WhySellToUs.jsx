@@ -23,12 +23,11 @@ const BADGES = [
 
 function WhySellToUs() {
   return (
-    <Section id="why-us" variant="dark">
+    <Section id="why-us" variant="subtle">
       <SectionHeading
         label="The Advantage"
         title="Why Sell to Us"
         subtitle="We are a direct buyer, not a broker. That means faster decisions, better offers, and zero hassle for you."
-        dark
       />
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
         {BADGES.map((badge) => (

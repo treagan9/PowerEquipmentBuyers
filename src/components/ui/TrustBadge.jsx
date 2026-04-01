@@ -6,15 +6,30 @@ function TrustBadge({ icon, text }) {
     <Flex
       align="center"
       gap={3}
-      bg="brand.darkSurface"
+      bg="white"
       border="1px solid"
-      borderColor="brand.darkBorder"
-      borderRadius="lg"
+      borderColor="brand.gray200"
+      borderRadius="xl"
       px={5}
       py={4}
+      transition="all 0.15s"
+      _hover={{
+        borderColor: 'brand.accentBorder',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
+      }}
     >
-      <Icon as={icon} boxSize={5} color="brand.accentLight" flexShrink={0} />
-      <Text fontSize="sm" fontWeight="600" color="white">
+      <Flex
+        w={9}
+        h={9}
+        bg="brand.accentSoft"
+        borderRadius="lg"
+        align="center"
+        justify="center"
+        flexShrink={0}
+      >
+        <Icon as={icon} boxSize={4.5} color="brand.accent" />
+      </Flex>
+      <Text fontSize="sm" fontWeight="600" color="brand.gray800">
         {text}
       </Text>
     </Flex>

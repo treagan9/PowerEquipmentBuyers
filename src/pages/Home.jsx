@@ -13,8 +13,8 @@ function Home() {
       <Header />
       <main>
         <Hero />
-        <EquipmentGrid />
         <HowItWorks />
+        <EquipmentGrid />
         <WhySellToUs />
         <CtaBand />
       </main>

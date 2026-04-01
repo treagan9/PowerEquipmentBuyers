@@ -1,12 +1,10 @@
 // src/components/home/Hero.jsx
 import { Box, Container, Heading, Text, Button, Flex, HStack, Icon } from '@chakra-ui/react'
-import { HiArrowRight, HiShieldCheck, HiClock, HiGlobe } from 'react-icons/hi'
+import { HiArrowRight, HiGlobe } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
 
 function Hero() {
-  const handleClick = () => {
-    const el = document.querySelector('#contact')
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-  }
+  const navigate = useNavigate()
 
   return (
     <Box
@@ -40,7 +38,7 @@ function Hero() {
         pointerEvents="none"
       />
 
-      {/* Grid texture overlay */}
+      {/* Grid texture */}
       <Box
         position="absolute"
         inset={0}
@@ -52,16 +50,24 @@ function Hero() {
 
       <Container maxW="1200px" px={{ base: 5, md: 8 }} position="relative">
         <Box maxW="820px">
-          <Text
-            fontSize="xs"
-            fontWeight="700"
-            textTransform="uppercase"
-            letterSpacing="0.14em"
-            color="brand.accent"
-            mb={6}
+
+          {/* Nationwide badge */}
+          <HStack
+            spacing={2}
+            bg="brand.accentSoft"
+            border="1px solid"
+            borderColor="brand.accentBorder"
+            borderRadius="full"
+            px={4}
+            py={1.5}
+            mb={8}
+            w="fit-content"
           >
-            Direct Buyer of Power Equipment
-          </Text>
+            <Icon as={HiGlobe} boxSize={3.5} color="brand.accent" />
+            <Text fontSize="xs" fontWeight="600" color="brand.accent" letterSpacing="0.02em">
+              Serving all 50 states
+            </Text>
+          </HStack>
 
           <Heading
             as="h2"
@@ -81,19 +87,20 @@ function Hero() {
             fontSize={{ base: 'lg', md: 'xl' }}
             color="brand.textSecondary"
             lineHeight="1.7"
-            maxW="580px"
+            maxW="600px"
             mb={10}
           >
-            Fast evaluation. Competitive offers. We handle pickup and payment.
-            All brands, new or used, anywhere in the US.
+            We buy all types of electrical equipment. Fast evaluation.
+            Competitive offers. We handle pickup and payment nationwide.
+            All brands, any condition.
           </Text>
 
-          <Flex gap={4} mb={14} direction={{ base: 'column', sm: 'row' }}>
+          <Flex gap={4} direction={{ base: 'column', sm: 'row' }}>
             <Button
               variant="primary"
               size="lg"
               rightIcon={<HiArrowRight />}
-              onClick={handleClick}
+              onClick={() => navigate('/contact/')}
               px={8}
               fontFamily="heading"
               fontWeight="700"
@@ -104,31 +111,12 @@ function Hero() {
             <Button
               variant="outline"
               size="lg"
-              onClick={handleClick}
+              onClick={() => navigate('/contact/')}
               px={8}
             >
               Upload Equipment Photos
             </Button>
           </Flex>
-
-          <HStack
-            spacing={{ base: 4, md: 8 }}
-            flexWrap="wrap"
-            fontSize="sm"
-          >
-            <HStack color="brand.textMuted">
-              <Icon as={HiClock} color="brand.accent" boxSize={4} />
-              <Text>Offers in under 1 hour</Text>
-            </HStack>
-            <HStack color="brand.textMuted">
-              <Icon as={HiGlobe} color="brand.accent" boxSize={4} />
-              <Text>Nationwide pickup</Text>
-            </HStack>
-            <HStack color="brand.textMuted">
-              <Icon as={HiShieldCheck} color="brand.accent" boxSize={4} />
-              <Text>Fast, guaranteed payment</Text>
-            </HStack>
-          </HStack>
         </Box>
       </Container>
     </Box>

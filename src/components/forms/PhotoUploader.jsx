@@ -9,10 +9,9 @@ import {
   IconButton,
   SimpleGrid
 } from '@chakra-ui/react'
-import { HiPhotograph, HiX, HiCamera } from 'react-icons/hi'
+import { HiPhotograph, HiX } from 'react-icons/hi'
 
 const MAX_PHOTOS = 5
-const MAX_SIZE_MB = 10
 const ACCEPTED = 'image/jpeg,image/png,image/webp,image/heic'
 
 function PhotoUploader({ photos, setPhotos }) {
@@ -21,11 +20,7 @@ function PhotoUploader({ photos, setPhotos }) {
   const handleFiles = (e) => {
     const files = Array.from(e.target.files)
     const remaining = MAX_PHOTOS - photos.length
-    const valid = files.slice(0, remaining).filter((file) => {
-      if (file.size > MAX_SIZE_MB * 1024 * 1024) return false
-      return true
-    })
-    setPhotos((prev) => [...prev, ...valid])
+    setPhotos((prev) => [...prev, ...files.slice(0, remaining)])
     if (inputRef.current) inputRef.current.value = ''
   }
 
@@ -48,7 +43,14 @@ function PhotoUploader({ photos, setPhotos }) {
       {photos.length > 0 && (
         <SimpleGrid columns={{ base: 3, md: 5 }} spacing={3} mb={4}>
           {photos.map((file, i) => (
-            <Box key={i} position="relative" borderRadius="lg" overflow="hidden">
+            <Box
+              key={i}
+              position="relative"
+              borderRadius="xl"
+              overflow="hidden"
+              border="1px solid"
+              borderColor="brand.border"
+            >
               <Image
                 src={URL.createObjectURL(file)}
                 alt={`Upload ${i + 1}`}
@@ -76,14 +78,15 @@ function PhotoUploader({ photos, setPhotos }) {
 
       {photos.length < MAX_PHOTOS && (
         <Flex
-          border="2px dashed"
-          borderColor="brand.border"
+          border="1px dashed"
+          borderColor="brand.borderLight"
           borderRadius="xl"
-          p={6}
+          p={8}
           direction="column"
           align="center"
           justify="center"
           cursor="pointer"
+          bg="brand.bgAlt"
           transition="all 0.2s"
           _hover={{
             borderColor: 'brand.accent',
@@ -91,15 +94,12 @@ function PhotoUploader({ photos, setPhotos }) {
           }}
           onClick={() => inputRef.current?.click()}
         >
-          <Flex gap={2} mb={2}>
-            <Icon as={HiPhotograph} boxSize={6} color="brand.textMuted" />
-            <Icon as={HiCamera} boxSize={6} color="brand.textMuted" />
-          </Flex>
-          <Text fontSize="sm" fontWeight="600" color="brand.textSecondary" mb={1}>
+          <Icon as={HiPhotograph} boxSize={8} color="brand.textMuted" mb={3} />
+          <Text fontSize="sm" fontWeight="600" color="brand.textSecondary">
             Upload equipment photos
           </Text>
-          <Text fontSize="xs" color="brand.textMuted">
-            Nameplate, overall condition, details ({photos.length}/{MAX_PHOTOS})
+          <Text fontSize="xs" color="brand.textMuted" mt={1}>
+            Nameplate, condition, details
           </Text>
         </Flex>
       )}

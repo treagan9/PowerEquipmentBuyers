@@ -8,22 +8,25 @@ import {
   IconButton,
   VStack,
   HStack,
-  Text,
   Image,
   Link as ChakraLink
 } from '@chakra-ui/react'
 import { HiMenu, HiX } from 'react-icons/hi'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const NAV_ITEMS = [
-  { label: 'Equipment', href: '#equipment' },
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Why Us', href: '#why-us' },
-  { label: 'Contact', href: '#contact' }
+  { label: 'Equipment', href: '#equipment', homeOnly: true },
+  { label: 'How It Works', href: '#how-it-works', homeOnly: true },
+  { label: 'Why Us', href: '#why-us', homeOnly: true },
+  { label: 'Contact', href: '/contact/', isRoute: true }
 ]
 
 function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const isHome = location.pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -31,11 +34,28 @@ function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (item) => {
     setMobileOpen(false)
-    const el = document.querySelector(href)
+    if (item.isRoute) {
+      navigate(item.href)
+      return
+    }
+    if (!isHome) {
+      navigate('/')
+      setTimeout(() => {
+        const el = document.querySelector(item.href)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+      return
+    }
+    const el = document.querySelector(item.href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const visibleItems = NAV_ITEMS.filter((item) => {
+    if (item.homeOnly && !isHome) return false
+    return true
+  })
 
   return (
     <Box
@@ -54,11 +74,10 @@ function Header() {
       <Container maxW="1200px" px={{ base: 5, md: 8 }}>
         <Flex h={{ base: '68px', md: '76px' }} align="center" justify="space-between">
 
-          {/* Logo */}
           <Flex
             align="center"
             cursor="pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => navigate('/')}
             flexShrink={0}
           >
             <Image
@@ -69,12 +88,11 @@ function Header() {
             />
           </Flex>
 
-          {/* Desktop Nav */}
           <HStack spacing={1} display={{ base: 'none', md: 'flex' }}>
-            {NAV_ITEMS.map((item) => (
+            {visibleItems.map((item) => (
               <ChakraLink
                 key={item.href}
-                onClick={() => handleNavClick(item.href)}
+                onClick={() => handleNavClick(item)}
                 fontSize="sm"
                 fontWeight="500"
                 color="brand.textSecondary"
@@ -95,7 +113,7 @@ function Header() {
               variant="primary"
               size="sm"
               ml={3}
-              onClick={() => handleNavClick('#contact')}
+              onClick={() => navigate('/contact/')}
               fontFamily="heading"
               letterSpacing="-0.01em"
             >
@@ -103,7 +121,6 @@ function Header() {
             </Button>
           </HStack>
 
-          {/* Mobile Toggle */}
           <IconButton
             display={{ base: 'flex', md: 'none' }}
             aria-label="Toggle menu"
@@ -115,7 +132,6 @@ function Header() {
           />
         </Flex>
 
-        {/* Mobile Menu */}
         {mobileOpen && (
           <Box
             display={{ base: 'block', md: 'none' }}
@@ -125,10 +141,10 @@ function Header() {
             mt={-1}
           >
             <VStack spacing={1} align="stretch" pt={4}>
-              {NAV_ITEMS.map((item) => (
+              {visibleItems.map((item) => (
                 <ChakraLink
                   key={item.href}
-                  onClick={() => handleNavClick(item.href)}
+                  onClick={() => handleNavClick(item)}
                   fontSize="md"
                   fontWeight="500"
                   color="brand.textSecondary"
@@ -144,7 +160,7 @@ function Header() {
               <Button
                 variant="primary"
                 size="lg"
-                onClick={() => handleNavClick('#contact')}
+                onClick={() => { setMobileOpen(false); navigate('/contact/') }}
                 w="full"
                 mt={2}
                 fontFamily="heading"

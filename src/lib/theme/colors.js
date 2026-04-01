@@ -1,52 +1,41 @@
 // src/lib/theme/colors.js
-
-// Primary palette — dark industrial with electric blue accents
-// Inspired by substation control rooms and industrial monitoring interfaces
 export const colors = {
   brand: {
-    // Backgrounds
-    bg: '#080c16',
-    bgAlt: '#0c1221',
-    surface: '#111827',
-    surfaceHover: '#162033',
-    surfaceLight: '#1a2540',
-    surfaceRaised: '#1e293b',
+    // Light surfaces (hero, header, alternating sections)
+    white: '#ffffff',
+    gray50: '#f8fafc',
+    gray100: '#f1f5f9',
+    gray200: '#e2e8f0',
+    gray300: '#cbd5e1',
+    gray400: '#94a3b8',
+    gray500: '#64748b',
+    gray600: '#475569',
+    gray700: '#334155',
+    gray800: '#1e293b',
+    gray900: '#0f172a',
+    gray950: '#080c16',
 
-    // Accent — electric blue
-    accent: '#3b82f6',
-    accentHover: '#2563eb',
-    accentPressed: '#1d4ed8',
-    accentSoft: 'rgba(59, 130, 246, 0.10)',
-    accentBorder: 'rgba(59, 130, 246, 0.25)',
-    accentGlow: '0 0 20px rgba(59, 130, 246, 0.15)',
+    // Dark surfaces (alternating sections)
+    dark: '#0b1120',
+    darkSurface: '#111827',
+    darkBorder: '#1e293b',
 
-    // Secondary accent — amber/warning (equipment category highlights)
-    amber: '#f59e0b',
-    amberSoft: 'rgba(245, 158, 11, 0.10)',
-    amberBorder: 'rgba(245, 158, 11, 0.25)',
+    // Primary accent — deep blue
+    accent: '#1e40af',
+    accentHover: '#1d4ed8',
+    accentLight: '#3b82f6',
+    accentSoft: 'rgba(30, 64, 175, 0.08)',
+    accentSoftDark: 'rgba(59, 130, 246, 0.10)',
+    accentBorder: 'rgba(30, 64, 175, 0.2)',
 
-    // Success — green (confirmations, badges)
-    success: '#22c55e',
-    successSoft: 'rgba(34, 197, 94, 0.10)',
+    // Success
+    success: '#16a34a',
+    successSoft: 'rgba(22, 163, 74, 0.08)',
+
+    // Warning / amber
+    amber: '#d97706',
 
     // Error
-    error: '#ef4444',
-    errorSoft: 'rgba(239, 68, 68, 0.10)',
-
-    // Text
-    text: '#f1f5f9',
-    textSecondary: '#94a3b8',
-    textMuted: '#64748b',
-    textDim: '#475569',
-
-    // Borders
-    border: '#1e293b',
-    borderLight: '#334155',
-    borderAccent: 'rgba(59, 130, 246, 0.3)',
-
-    // Gradients (use as CSS values)
-    heroGradient: 'linear-gradient(135deg, #080c16 0%, #0c1a3a 50%, #080c16 100%)',
-    cardGradient: 'linear-gradient(180deg, #111827 0%, #0f172a 100%)',
-    accentGradient: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
+    error: '#dc2626'
   }
 }

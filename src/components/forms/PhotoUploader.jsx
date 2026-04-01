@@ -46,10 +46,10 @@ function PhotoUploader({ photos, setPhotos }) {
             <Box
               key={i}
               position="relative"
-              borderRadius="xl"
+              borderRadius="lg"
               overflow="hidden"
               border="1px solid"
-              borderColor="brand.border"
+              borderColor="brand.gray200"
             >
               <Image
                 src={URL.createObjectURL(file)}
@@ -65,7 +65,7 @@ function PhotoUploader({ photos, setPhotos }) {
                 position="absolute"
                 top={1}
                 right={1}
-                bg="blackAlpha.700"
+                bg="blackAlpha.600"
                 color="white"
                 borderRadius="full"
                 _hover={{ bg: 'red.500' }}
@@ -78,27 +78,27 @@ function PhotoUploader({ photos, setPhotos }) {
 
       {photos.length < MAX_PHOTOS && (
         <Flex
-          border="1px dashed"
-          borderColor="brand.borderLight"
+          border="1.5px dashed"
+          borderColor="brand.gray300"
           borderRadius="xl"
           p={8}
           direction="column"
           align="center"
           justify="center"
           cursor="pointer"
-          bg="brand.bgAlt"
-          transition="all 0.2s"
+          bg="brand.gray50"
+          transition="all 0.15s"
           _hover={{
             borderColor: 'brand.accent',
             bg: 'brand.accentSoft'
           }}
           onClick={() => inputRef.current?.click()}
         >
-          <Icon as={HiPhotograph} boxSize={8} color="brand.textMuted" mb={3} />
-          <Text fontSize="sm" fontWeight="600" color="brand.textSecondary">
+          <Icon as={HiPhotograph} boxSize={7} color="brand.gray400" mb={2} />
+          <Text fontSize="sm" fontWeight="600" color="brand.gray600">
             Upload equipment photos
           </Text>
-          <Text fontSize="xs" color="brand.textMuted" mt={1}>
+          <Text fontSize="xs" color="brand.gray400" mt={1}>
             Nameplate, condition, details
           </Text>
         </Flex>

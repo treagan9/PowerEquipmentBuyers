@@ -1,46 +1,37 @@
 // src/lib/theme/typography.js
 
-// Syne — bold geometric display face with engineered personality
-// Outfit — clean, modern geometric sans for body text
-// Both loaded via Google Fonts in index.html
-
+// Plus Jakarta Sans — geometric, professional, modern display face
+// DM Sans — clean, highly legible body text
 export const fonts = {
-  heading: "'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  body: "'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  mono: "'JetBrains Mono', 'Fira Code', monospace"
+  heading: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  body: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
 }
 
 export const textStyles = {
   heroTitle: {
-    fontSize: { base: '3xl', md: '5xl', lg: '6xl' },
+    fontSize: { base: '3xl', md: '5xl', lg: '56px' },
     fontWeight: '800',
-    lineHeight: '1.06',
-    letterSpacing: '-0.03em',
+    lineHeight: '1.08',
+    letterSpacing: '-0.035em',
     fontFamily: 'heading'
   },
   sectionTitle: {
-    fontSize: { base: '2xl', md: '4xl' },
+    fontSize: { base: '2xl', md: '36px' },
     fontWeight: '700',
-    lineHeight: '1.12',
-    letterSpacing: '-0.02em',
+    lineHeight: '1.15',
+    letterSpacing: '-0.025em',
     fontFamily: 'heading'
   },
   cardTitle: {
-    fontSize: 'lg',
+    fontSize: 'md',
     fontWeight: '700',
     lineHeight: '1.3',
     fontFamily: 'heading'
   },
   label: {
-    fontSize: 'xs',
+    fontSize: '11px',
     fontWeight: '700',
     textTransform: 'uppercase',
-    letterSpacing: '0.14em',
-    color: 'brand.accent'
-  },
-  body: {
-    fontSize: { base: 'md', md: 'lg' },
-    lineHeight: '1.7',
-    color: 'brand.textSecondary'
+    letterSpacing: '0.1em'
   }
 }

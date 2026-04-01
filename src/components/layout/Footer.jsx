@@ -15,25 +15,25 @@ function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <Box as="footer" bg="brand.surface" borderTop="1px solid" borderColor="brand.border">
-      <Container maxW="1200px" px={{ base: 5, md: 8 }} py={12}>
+    <Box as="footer" bg="brand.gray50" borderTop="1px solid" borderColor="brand.gray200">
+      <Container maxW="1200px" px={{ base: 5, md: 8 }} py={10}>
         <Flex
           direction={{ base: 'column', md: 'row' }}
           justify="space-between"
           align={{ base: 'center', md: 'flex-start' }}
-          gap={10}
+          gap={8}
         >
-          <VStack align={{ base: 'center', md: 'flex-start' }} spacing={4}>
+          <VStack align={{ base: 'center', md: 'flex-start' }} spacing={3}>
             <Image
               src="/logo-wide-transparent-background.png"
               alt="Power Equipment Buyers"
-              h="34px"
+              h="30px"
               objectFit="contain"
             />
             <Text
               fontSize="sm"
-              color="brand.textSecondary"
-              maxW="340px"
+              color="brand.gray500"
+              maxW="320px"
               textAlign={{ base: 'center', md: 'left' }}
               lineHeight="1.7"
             >
@@ -42,12 +42,12 @@ function Footer() {
             </Text>
           </VStack>
 
-          <VStack align={{ base: 'center', md: 'flex-end' }} spacing={3}>
+          <VStack align={{ base: 'center', md: 'flex-end' }} spacing={2}>
             <Text
-              fontSize="xs"
+              fontSize="11px"
               fontWeight="700"
               textTransform="uppercase"
-              letterSpacing="0.12em"
+              letterSpacing="0.1em"
               color="brand.accent"
             >
               Contact
@@ -55,7 +55,7 @@ function Footer() {
             <ChakraLink
               href="mailto:info@powerequipmentbuyers.com"
               fontSize="sm"
-              color="brand.textSecondary"
+              color="brand.gray500"
               _hover={{ color: 'brand.accent' }}
             >
               info@powerequipmentbuyers.com
@@ -63,32 +63,22 @@ function Footer() {
           </VStack>
         </Flex>
 
-        <Divider borderColor="brand.border" my={8} />
+        <Divider borderColor="brand.gray200" my={6} />
 
         <Flex
           direction={{ base: 'column', md: 'row' }}
           justify="space-between"
           align="center"
-          gap={4}
+          gap={3}
         >
-          <Text fontSize="xs" color="brand.textDim">
+          <Text fontSize="xs" color="brand.gray400">
             {year} Power Equipment Buyers. All rights reserved.
           </Text>
-          <HStack spacing={6}>
-            <ChakraLink
-              fontSize="xs"
-              color="brand.textDim"
-              _hover={{ color: 'brand.textSecondary' }}
-              href="#"
-            >
+          <HStack spacing={5}>
+            <ChakraLink fontSize="xs" color="brand.gray400" _hover={{ color: 'brand.gray600' }} href="#">
               Privacy Policy
             </ChakraLink>
-            <ChakraLink
-              fontSize="xs"
-              color="brand.textDim"
-              _hover={{ color: 'brand.textSecondary' }}
-              href="#"
-            >
+            <ChakraLink fontSize="xs" color="brand.gray400" _hover={{ color: 'brand.gray600' }} href="#">
               Terms of Service
             </ChakraLink>
           </HStack>

@@ -2,6 +2,7 @@
 export const components = {
   Button: {
     baseStyle: {
+      fontFamily: 'heading',
       fontWeight: '600',
       borderRadius: 'lg',
       transition: 'all 0.2s'
@@ -13,37 +14,44 @@ export const components = {
         _hover: {
           bg: 'brand.accentHover',
           transform: 'translateY(-1px)',
-          boxShadow: '0 4px 20px rgba(59, 130, 246, 0.35)'
+          boxShadow: '0 4px 16px rgba(30, 64, 175, 0.3)'
         },
         _active: {
-          bg: 'brand.accentPressed',
           transform: 'translateY(0)'
         }
       },
-      secondary: {
-        bg: 'brand.surface',
-        color: 'brand.text',
-        border: '1px solid',
-        borderColor: 'brand.border',
+      primaryLight: {
+        bg: 'white',
+        color: 'brand.accent',
         _hover: {
-          bg: 'brand.surfaceHover',
-          borderColor: 'brand.borderLight'
+          bg: 'brand.gray100',
+          transform: 'translateY(-1px)'
         }
       },
       outline: {
         bg: 'transparent',
         color: 'brand.accent',
-        border: '1px solid',
+        border: '1.5px solid',
         borderColor: 'brand.accent',
         _hover: {
           bg: 'brand.accentSoft'
         }
       },
-      ghost: {
-        color: 'brand.textSecondary',
+      outlineLight: {
+        bg: 'transparent',
+        color: 'white',
+        border: '1.5px solid',
+        borderColor: 'whiteAlpha.400',
         _hover: {
-          bg: 'brand.surface',
-          color: 'brand.text'
+          bg: 'whiteAlpha.100',
+          borderColor: 'whiteAlpha.600'
+        }
+      },
+      ghost: {
+        color: 'brand.gray600',
+        _hover: {
+          bg: 'brand.gray100',
+          color: 'brand.gray900'
         }
       }
     }
@@ -52,23 +60,22 @@ export const components = {
     variants: {
       filled: {
         field: {
-          bg: 'brand.surface',
-          border: '1px solid',
-          borderColor: 'brand.border',
+          bg: 'brand.gray50',
+          border: '1.5px solid',
+          borderColor: 'brand.gray200',
           borderRadius: 'lg',
-          color: 'brand.text',
+          color: 'brand.gray900',
           fontSize: 'sm',
           _hover: {
-            bg: 'brand.surfaceHover',
-            borderColor: 'brand.borderLight'
+            borderColor: 'brand.gray300'
           },
           _focus: {
-            bg: 'brand.surfaceHover',
             borderColor: 'brand.accent',
-            boxShadow: '0 0 0 1px var(--chakra-colors-brand-accent)'
+            bg: 'white',
+            boxShadow: '0 0 0 3px rgba(30, 64, 175, 0.08)'
           },
           _placeholder: {
-            color: 'brand.textMuted'
+            color: 'brand.gray400'
           }
         }
       }
@@ -80,23 +87,22 @@ export const components = {
   Textarea: {
     variants: {
       filled: {
-        bg: 'brand.surface',
-        border: '1px solid',
-        borderColor: 'brand.border',
+        bg: 'brand.gray50',
+        border: '1.5px solid',
+        borderColor: 'brand.gray200',
         borderRadius: 'lg',
-        color: 'brand.text',
+        color: 'brand.gray900',
         fontSize: 'sm',
         _hover: {
-          bg: 'brand.surfaceHover',
-          borderColor: 'brand.borderLight'
+          borderColor: 'brand.gray300'
         },
         _focus: {
-          bg: 'brand.surfaceHover',
           borderColor: 'brand.accent',
-          boxShadow: '0 0 0 1px var(--chakra-colors-brand-accent)'
+          bg: 'white',
+          boxShadow: '0 0 0 3px rgba(30, 64, 175, 0.08)'
         },
         _placeholder: {
-          color: 'brand.textMuted'
+          color: 'brand.gray400'
         }
       }
     },
@@ -108,19 +114,18 @@ export const components = {
     variants: {
       filled: {
         field: {
-          bg: 'brand.surface',
-          border: '1px solid',
-          borderColor: 'brand.border',
+          bg: 'brand.gray50',
+          border: '1.5px solid',
+          borderColor: 'brand.gray200',
           borderRadius: 'lg',
-          color: 'brand.text',
+          color: 'brand.gray900',
           fontSize: 'sm',
           _hover: {
-            bg: 'brand.surfaceHover',
-            borderColor: 'brand.borderLight'
+            borderColor: 'brand.gray300'
           },
           _focus: {
-            bg: 'brand.surfaceHover',
-            borderColor: 'brand.accent'
+            borderColor: 'brand.accent',
+            bg: 'white'
           }
         }
       }
@@ -133,7 +138,7 @@ export const components = {
     baseStyle: {
       fontSize: 'sm',
       fontWeight: '600',
-      color: 'brand.textSecondary',
+      color: 'brand.gray700',
       mb: 1.5
     }
   }

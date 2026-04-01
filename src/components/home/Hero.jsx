@@ -10,46 +10,25 @@ function Hero() {
     <Box
       position="relative"
       overflow="hidden"
-      pt={{ base: 32, md: 44 }}
-      pb={{ base: 20, md: 32 }}
-      bg="brand.heroGradient"
+      pt={{ base: 28, md: 40 }}
+      pb={{ base: 16, md: 24 }}
+      bg="white"
     >
-      {/* Glow orbs */}
+      {/* Subtle gradient accent */}
       <Box
         position="absolute"
-        top="-20%"
-        right="-10%"
-        w="50vw"
-        h="50vw"
-        maxW="700px"
-        maxH="700px"
-        bg="radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, transparent 65%)"
-        pointerEvents="none"
-      />
-      <Box
-        position="absolute"
-        bottom="-15%"
-        left="-5%"
-        w="40vw"
-        h="40vw"
-        maxW="500px"
-        maxH="500px"
-        bg="radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, transparent 65%)"
-        pointerEvents="none"
-      />
-
-      {/* Grid texture */}
-      <Box
-        position="absolute"
-        inset={0}
-        opacity={0.03}
-        backgroundImage="linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)"
-        backgroundSize="60px 60px"
+        top="-30%"
+        right="-15%"
+        w="60vw"
+        h="60vw"
+        maxW="800px"
+        maxH="800px"
+        bg="radial-gradient(circle, rgba(30, 64, 175, 0.04) 0%, transparent 60%)"
         pointerEvents="none"
       />
 
       <Container maxW="1200px" px={{ base: 5, md: 8 }} position="relative">
-        <Box maxW="820px">
+        <Box maxW="680px">
 
           {/* Nationwide badge */}
           <HStack
@@ -58,13 +37,13 @@ function Hero() {
             border="1px solid"
             borderColor="brand.accentBorder"
             borderRadius="full"
-            px={4}
-            py={1.5}
-            mb={8}
+            px={3.5}
+            py={1}
+            mb={7}
             w="fit-content"
           >
             <Icon as={HiGlobe} boxSize={3.5} color="brand.accent" />
-            <Text fontSize="xs" fontWeight="600" color="brand.accent" letterSpacing="0.02em">
+            <Text fontSize="11px" fontWeight="600" color="brand.accent" letterSpacing="0.01em">
               Serving all 50 states
             </Text>
           </HStack>
@@ -72,39 +51,37 @@ function Hero() {
           <Heading
             as="h2"
             fontFamily="heading"
-            fontSize={{ base: '3xl', md: '5xl', lg: '6xl' }}
+            fontSize={{ base: '32px', md: '48px', lg: '56px' }}
             fontWeight="800"
-            lineHeight="1.06"
-            letterSpacing="-0.03em"
-            mb={7}
+            lineHeight="1.08"
+            letterSpacing="-0.035em"
+            color="brand.gray900"
+            mb={6}
           >
-            Sell Your Transformers
-            <Box as="br" display={{ base: 'none', md: 'block' }} />
-            <Box as="span" color="brand.accent"> and Switchgear</Box>
+            Sell Your Transformers{' '}
+            <Box as="br" display={{ base: 'none', lg: 'block' }} />
+            and Switchgear
           </Heading>
 
           <Text
-            fontSize={{ base: 'lg', md: 'xl' }}
-            color="brand.textSecondary"
-            lineHeight="1.7"
-            maxW="600px"
-            mb={10}
+            fontSize={{ base: 'md', md: 'lg' }}
+            color="brand.gray500"
+            lineHeight="1.75"
+            maxW="540px"
+            mb={9}
           >
             We buy all types of electrical equipment. Fast evaluation.
             Competitive offers. We handle pickup and payment nationwide.
             All brands, any condition.
           </Text>
 
-          <Flex gap={4} direction={{ base: 'column', sm: 'row' }}>
+          <Flex gap={3} direction={{ base: 'column', sm: 'row' }}>
             <Button
               variant="primary"
               size="lg"
               rightIcon={<HiArrowRight />}
               onClick={() => navigate('/contact/')}
-              px={8}
-              fontFamily="heading"
-              fontWeight="700"
-              letterSpacing="-0.01em"
+              px={7}
             >
               Get Your Offer
             </Button>
@@ -112,7 +89,7 @@ function Hero() {
               variant="outline"
               size="lg"
               onClick={() => navigate('/contact/')}
-              px={8}
+              px={7}
             >
               Upload Equipment Photos
             </Button>

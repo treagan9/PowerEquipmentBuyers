@@ -1,5 +1,5 @@
 // src/components/home/HowItWorks.jsx
-import { SimpleGrid, Box } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 import Section from '../layout/Section'
 import SectionHeading from '../ui/SectionHeading'
 import StepCard from '../ui/StepCard'
@@ -8,7 +8,7 @@ const STEPS = [
   {
     number: '1',
     title: 'Contact Us',
-    description: 'Call, email, or fill out the form below with details about your equipment. Upload photos of the nameplate, overall condition, and any specifics.'
+    description: 'Call, email, or fill out our form with details about your equipment. Upload photos of the nameplate, overall condition, and any specifics.'
   },
   {
     number: '2',
@@ -24,7 +24,7 @@ const STEPS = [
 
 function HowItWorks() {
   return (
-    <Section id="how-it-works" bg="brand.surface">
+    <Section id="how-it-works" variant="subtle">
       <SectionHeading
         label="Simple Process"
         title="How It Works"

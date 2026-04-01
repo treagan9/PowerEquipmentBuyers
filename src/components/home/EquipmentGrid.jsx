@@ -40,13 +40,14 @@ const EQUIPMENT = [
 
 function EquipmentGrid() {
   return (
-    <Section id="equipment">
+    <Section id="equipment" variant="dark">
       <SectionHeading
         label="What We Buy"
         title="Transformers and Switchgear"
         subtitle="We purchase all major brands, any condition, any size. If it handles power, we want to hear about it."
+        dark
       />
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
         {EQUIPMENT.map((item) => (
           <EquipmentCard key={item.title} {...item} />
         ))}

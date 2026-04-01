@@ -81,15 +81,15 @@ function QuoteForm() {
   }
 
   return (
-    <Box py={{ base: 12, md: 20 }}>
+    <Box py={{ base: 4, md: 8 }} bg="brand.gray50">
       <Container maxW="680px" px={{ base: 5, md: 8 }}>
         <Box
-          bg="brand.surface"
+          bg="white"
           border="1px solid"
-          borderColor="brand.border"
+          borderColor="brand.gray200"
           borderRadius="2xl"
           p={{ base: 6, md: 10 }}
-          boxShadow="0 4px 40px rgba(0, 0, 0, 0.3)"
+          boxShadow="0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 24px rgba(0, 0, 0, 0.06)"
         >
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5} mb={5}>
             <FormControl isRequired>
@@ -133,9 +133,7 @@ function QuoteForm() {
                 onChange={handleChange}
               >
                 {EQUIPMENT_TYPES.map((type) => (
-                  <option key={type} value={type} style={{ background: '#111827' }}>
-                    {type}
-                  </option>
+                  <option key={type} value={type}>{type}</option>
                 ))}
               </Select>
             </FormControl>
@@ -165,13 +163,11 @@ function QuoteForm() {
             onClick={handleSubmit}
             isLoading={loading}
             loadingText="Submitting..."
-            fontFamily="heading"
-            fontWeight="700"
           >
             Submit for Offer
           </Button>
 
-          <Text fontSize="xs" color="brand.textDim" textAlign="center" mt={5}>
+          <Text fontSize="xs" color="brand.gray400" textAlign="center" mt={4}>
             We typically respond within one hour during business hours.
           </Text>
         </Box>

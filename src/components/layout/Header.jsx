@@ -65,14 +65,14 @@ function Header() {
       left={0}
       right={0}
       zIndex={100}
-      bg={scrolled ? 'rgba(8, 12, 22, 0.95)' : 'transparent'}
-      backdropFilter={scrolled ? 'blur(16px) saturate(1.2)' : 'none'}
+      bg={scrolled ? 'rgba(255, 255, 255, 0.96)' : 'white'}
+      backdropFilter={scrolled ? 'blur(12px)' : 'none'}
       borderBottom="1px solid"
-      borderColor={scrolled ? 'brand.border' : 'transparent'}
-      transition="all 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
+      borderColor={scrolled ? 'brand.gray200' : 'brand.gray100'}
+      transition="all 0.3s"
     >
       <Container maxW="1200px" px={{ base: 5, md: 8 }}>
-        <Flex h={{ base: '68px', md: '76px' }} align="center" justify="space-between">
+        <Flex h={{ base: '64px', md: '72px' }} align="center" justify="space-between">
 
           <Flex
             align="center"
@@ -83,7 +83,7 @@ function Header() {
             <Image
               src="/logo-wide-transparent-background.png"
               alt="Power Equipment Buyers"
-              h={{ base: '32px', md: '38px' }}
+              h={{ base: '30px', md: '36px' }}
               objectFit="contain"
             />
           </Flex>
@@ -95,16 +95,16 @@ function Header() {
                 onClick={() => handleNavClick(item)}
                 fontSize="sm"
                 fontWeight="500"
-                color="brand.textSecondary"
-                px={4}
+                color="brand.gray600"
+                px={3.5}
                 py={2}
                 borderRadius="lg"
                 _hover={{
-                  color: 'brand.text',
-                  bg: 'whiteAlpha.50'
+                  color: 'brand.gray900',
+                  bg: 'brand.gray50'
                 }}
                 cursor="pointer"
-                transition="all 0.2s"
+                transition="all 0.15s"
               >
                 {item.label}
               </ChakraLink>
@@ -112,10 +112,9 @@ function Header() {
             <Button
               variant="primary"
               size="sm"
-              ml={3}
+              ml={2}
               onClick={() => navigate('/contact/')}
-              fontFamily="heading"
-              letterSpacing="-0.01em"
+              px={5}
             >
               Get an Offer
             </Button>
@@ -124,33 +123,31 @@ function Header() {
           <IconButton
             display={{ base: 'flex', md: 'none' }}
             aria-label="Toggle menu"
-            icon={mobileOpen ? <HiX size={22} /> : <HiMenu size={22} />}
+            icon={mobileOpen ? <HiX size={20} /> : <HiMenu size={20} />}
             variant="ghost"
-            color="brand.text"
+            color="brand.gray700"
             onClick={() => setMobileOpen(!mobileOpen)}
-            _hover={{ bg: 'whiteAlpha.100' }}
           />
         </Flex>
 
         {mobileOpen && (
           <Box
             display={{ base: 'block', md: 'none' }}
-            pb={6}
+            pb={5}
             borderTop="1px solid"
-            borderColor="brand.border"
-            mt={-1}
+            borderColor="brand.gray100"
           >
-            <VStack spacing={1} align="stretch" pt={4}>
+            <VStack spacing={1} align="stretch" pt={3}>
               {visibleItems.map((item) => (
                 <ChakraLink
                   key={item.href}
                   onClick={() => handleNavClick(item)}
                   fontSize="md"
                   fontWeight="500"
-                  color="brand.textSecondary"
-                  _hover={{ color: 'brand.text', bg: 'whiteAlpha.50' }}
+                  color="brand.gray600"
+                  _hover={{ color: 'brand.gray900', bg: 'brand.gray50' }}
                   cursor="pointer"
-                  py={3}
+                  py={2.5}
                   px={4}
                   borderRadius="lg"
                 >
@@ -159,11 +156,10 @@ function Header() {
               ))}
               <Button
                 variant="primary"
-                size="lg"
+                size="md"
                 onClick={() => { setMobileOpen(false); navigate('/contact/') }}
                 w="full"
                 mt={2}
-                fontFamily="heading"
               >
                 Get an Offer
               </Button>

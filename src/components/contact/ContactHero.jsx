@@ -6,28 +6,18 @@ function ContactHero() {
   return (
     <Box
       position="relative"
-      overflow="hidden"
       pt={{ base: 28, md: 36 }}
-      pb={{ base: 10, md: 14 }}
-      bg="brand.heroGradient"
+      pb={{ base: 8, md: 12 }}
+      bg="white"
     >
-      <Box
-        position="absolute"
-        inset={0}
-        opacity={0.03}
-        backgroundImage="linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)"
-        backgroundSize="60px 60px"
-        pointerEvents="none"
-      />
-
-      <Container maxW="720px" px={{ base: 5, md: 8 }} position="relative" textAlign="center">
+      <Container maxW="680px" px={{ base: 5, md: 8 }} textAlign="center">
         <Text
-          fontSize="xs"
+          fontSize="11px"
           fontWeight="700"
           textTransform="uppercase"
-          letterSpacing="0.14em"
+          letterSpacing="0.1em"
           color="brand.accent"
-          mb={5}
+          mb={4}
         >
           Get Your Offer
         </Text>
@@ -35,33 +25,34 @@ function ContactHero() {
         <Heading
           as="h1"
           fontFamily="heading"
-          fontSize={{ base: '2xl', md: '4xl' }}
+          fontSize={{ base: '2xl', md: '36px' }}
           fontWeight="800"
-          lineHeight="1.1"
-          letterSpacing="-0.02em"
-          mb={5}
+          lineHeight="1.12"
+          letterSpacing="-0.025em"
+          color="brand.gray900"
+          mb={4}
         >
           Tell Us About Your Equipment
         </Heading>
 
         <Text
           fontSize={{ base: 'md', md: 'lg' }}
-          color="brand.textSecondary"
+          color="brand.gray500"
           lineHeight="1.7"
-          maxW="520px"
+          maxW="480px"
           mx="auto"
-          mb={8}
+          mb={7}
         >
           Share details and photos below. We typically respond with an offer
           within one hour during business hours.
         </Text>
 
         <HStack
-          spacing={{ base: 4, md: 8 }}
+          spacing={{ base: 4, md: 7 }}
           justify="center"
           flexWrap="wrap"
           fontSize="sm"
-          color="brand.textMuted"
+          color="brand.gray400"
         >
           <HStack>
             <Icon as={HiClock} color="brand.accent" boxSize={4} />

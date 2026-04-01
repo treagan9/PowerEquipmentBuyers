@@ -3,27 +3,29 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 
 function StepCard({ number, title, description }) {
   return (
-    <Box position="relative">
+    <Box>
       <Flex
-        w={14}
-        h={14}
+        w={12}
+        h={12}
         bg="brand.accentSoft"
-        border="2px solid"
-        borderColor="brand.accent"
+        border="1.5px solid"
+        borderColor="brand.accentBorder"
         borderRadius="full"
         align="center"
         justify="center"
         mb={5}
         mx={{ base: 'auto', md: '0' }}
       >
-        <Text fontSize="xl" fontWeight="800" color="brand.accent">
+        <Text fontSize="lg" fontWeight="800" color="brand.accent" fontFamily="heading">
           {number}
         </Text>
       </Flex>
       <Heading
         as="h3"
-        fontSize="lg"
+        fontFamily="heading"
+        fontSize="md"
         fontWeight="700"
+        color="brand.gray900"
         mb={2}
         textAlign={{ base: 'center', md: 'left' }}
       >
@@ -31,7 +33,7 @@ function StepCard({ number, title, description }) {
       </Heading>
       <Text
         fontSize="sm"
-        color="brand.textSecondary"
+        color="brand.gray500"
         lineHeight="1.7"
         textAlign={{ base: 'center', md: 'left' }}
       >

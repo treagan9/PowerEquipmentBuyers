@@ -5,6 +5,7 @@ import Hero from '../components/home/Hero'
 import EquipmentGrid from '../components/home/EquipmentGrid'
 import HowItWorks from '../components/home/HowItWorks'
 import WhySellToUs from '../components/home/WhySellToUs'
+import CtaBand from '../components/home/CtaBand'
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
         <EquipmentGrid />
         <HowItWorks />
         <WhySellToUs />
+        <CtaBand />
       </main>
       <Footer />
     </>

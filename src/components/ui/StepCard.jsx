@@ -5,18 +5,16 @@ function StepCard({ number, title, description }) {
   return (
     <Box>
       <Flex
-        w={12}
-        h={12}
-        bg="brand.accentSoft"
-        border="1.5px solid"
-        borderColor="brand.accentBorder"
+        w={11}
+        h={11}
+        bg="brand.accent"
         borderRadius="full"
         align="center"
         justify="center"
         mb={5}
         mx={{ base: 'auto', md: '0' }}
       >
-        <Text fontSize="lg" fontWeight="800" color="brand.accent" fontFamily="heading">
+        <Text fontSize="md" fontWeight="800" color="white" fontFamily="heading">
           {number}
         </Text>
       </Flex>
@@ -26,7 +24,7 @@ function StepCard({ number, title, description }) {
         fontSize="md"
         fontWeight="700"
         color="brand.gray900"
-        mb={2}
+        mb={2.5}
         textAlign={{ base: 'center', md: 'left' }}
       >
         {title}
@@ -34,7 +32,7 @@ function StepCard({ number, title, description }) {
       <Text
         fontSize="sm"
         color="brand.gray500"
-        lineHeight="1.7"
+        lineHeight="1.75"
         textAlign={{ base: 'center', md: 'left' }}
       >
         {description}

@@ -1,5 +1,6 @@
 // src/components/home/HowItWorks.jsx
-import { SimpleGrid } from '@chakra-ui/react'
+import { Box, SimpleGrid, Button, Flex } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 import Section from '../layout/Section'
 import SectionHeading from '../ui/SectionHeading'
 import StepCard from '../ui/StepCard'
@@ -7,34 +8,61 @@ import StepCard from '../ui/StepCard'
 const STEPS = [
   {
     number: '1',
-    title: 'Contact Us',
-    description: 'Call, email, or fill out our form with details about your equipment. Upload photos of the nameplate, overall condition, and any specifics.'
+    title: 'Tell Us What You Have',
+    description: 'Fill out our form or give us a call. Share the basics: brand, model, kVA or voltage rating, age, and condition. Photos of the nameplate and overall unit help us move faster.'
   },
   {
     number: '2',
-    title: 'Get Your Offer',
-    description: 'We evaluate your equipment and provide a competitive offer, typically within one hour. For large lots or high-value items, we will visit your facility.'
+    title: 'Get a Competitive Offer',
+    description: 'We evaluate your equipment and come back with an offer, typically within an hour. For larger lots or high-value pieces, we will send someone to your facility to inspect in person.'
   },
   {
     number: '3',
-    title: 'We Handle the Rest',
-    description: 'Accept the offer and we coordinate everything. We arrange pickup with our carrier network and guarantee fast payment via wire, check, or PayPal.'
+    title: 'We Pick Up and Pay',
+    description: 'Once you accept, we handle everything. We coordinate freight with our carrier network, load the equipment at your site, and guarantee fast payment by wire, check, or PayPal.'
   }
 ]
 
 function HowItWorks() {
+  const navigate = useNavigate()
+
   return (
     <Section id="how-it-works" variant="subtle">
       <SectionHeading
-        label="Simple Process"
-        title="How It Works"
-        subtitle="Selling your surplus equipment should not be complicated. We make it straightforward."
+        label="How Selling Works"
+        title="From Contact to Payment in Days"
+        subtitle="No brokers, no back and forth. You talk directly to our buyer and we handle the rest."
       />
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
-        {STEPS.map((step) => (
-          <StepCard key={step.number} {...step} />
-        ))}
-      </SimpleGrid>
+
+      {/* Step connector line (desktop only) */}
+      <Box position="relative">
+        <Box
+          display={{ base: 'none', md: 'block' }}
+          position="absolute"
+          top="22px"
+          left="calc(16.66% + 22px)"
+          right="calc(16.66% + 22px)"
+          h="2px"
+          bg="brand.gray200"
+          zIndex={0}
+        />
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} position="relative" zIndex={1}>
+          {STEPS.map((step) => (
+            <StepCard key={step.number} {...step} />
+          ))}
+        </SimpleGrid>
+      </Box>
+
+      <Flex justify="center" mt={12}>
+        <Button
+          variant="primary"
+          size="lg"
+          onClick={() => navigate('/contact/')}
+          px={8}
+        >
+          Request an Offer
+        </Button>
+      </Flex>
     </Section>
   )
 }

@@ -88,8 +88,8 @@ function Header() {
             <Image
               src="/logo-wide-transparent-background.png"
               alt="MWGridSolutions"
-              h={{ base: '48px', md: '58px' }}
-              maxW={{ base: '140px', md: '180px' }}
+              h={{ base: '54px', md: '68px' }}
+              maxW={{ base: '160px', md: '220px' }}
               objectFit="contain"
               filter={isTransparent ? 'brightness(0) invert(1)' : 'none'}
               transition="filter 0.3s"

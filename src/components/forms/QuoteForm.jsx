@@ -159,7 +159,7 @@ function QuoteForm() {
             variant="primary"
             size="lg"
             w="full"
-            rightIcon={<HiArrowRight />}
+            
             onClick={handleSubmit}
             isLoading={loading}
             loadingText="Submitting..."

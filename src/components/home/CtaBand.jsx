@@ -52,7 +52,7 @@ function CtaBand() {
             bg="white"
             color="brand.accent"
             size="lg"
-            rightIcon={<HiArrowRight />}
+            
             onClick={() => navigate('/contact/')}
             px={7}
             fontFamily="heading"

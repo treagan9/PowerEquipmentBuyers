@@ -2,7 +2,7 @@
 // Twilio webhook: incoming call > forward to client cell, record, voicemail fallback
 
 const FORWARD_PHONE = process.env.FORWARD_PHONE || '+17138236276'
-const SITE_URL = process.env.URL || 'https://powerequipmentbuyers.netlify.app'
+const SITE_URL = process.env.URL || 'https://mwgridsolutions.netlify.app'
 
 export default async function handler(req) {
   if (req.method !== 'POST') {
@@ -44,7 +44,7 @@ export default async function handler(req) {
   <Say voice="Polly.Matthew-Neural">You've reached MW Grid Solutions. Leave your name, number, and what equipment you're looking to sell. We'll get back to you fast.</Say>
   <Record
     maxLength="120"
-    recordingStatusCallback="${process.env.URL || 'https://powerequipmentbuyers.netlify.app'}/.netlify/functions/handle-recording"
+    recordingStatusCallback="${process.env.URL || 'https://mwgridsolutions.netlify.app'}/.netlify/functions/handle-recording"
     recordingStatusCallbackMethod="POST"
   />
 </Response>`

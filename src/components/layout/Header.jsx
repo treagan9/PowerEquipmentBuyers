@@ -21,7 +21,6 @@ const NAV_ITEMS = [
   { label: 'Contact', href: '/contact/', isRoute: true }
 ]
 
-// Pages that have a dark hero image background
 const DARK_HERO_PAGES = ['/', '/contact/']
 
 function Header() {
@@ -78,7 +77,7 @@ function Header() {
       transition="all 0.3s"
     >
       <Container maxW="1200px" px={{ base: 5, md: 8 }}>
-        <Flex h={{ base: '64px', md: '72px' }} align="center" justify="space-between">
+        <Flex h={{ base: '72px', md: '80px' }} align="center" justify="space-between">
 
           <Flex
             align="center"
@@ -88,8 +87,9 @@ function Header() {
           >
             <Image
               src="/logo-wide-transparent-background.png"
-              alt="Power Equipment Buyers"
-              h={{ base: '30px', md: '36px' }}
+              alt="MWGridSolutions"
+              h={{ base: '48px', md: '58px' }}
+              maxW={{ base: '140px', md: '180px' }}
               objectFit="contain"
               filter={isTransparent ? 'brightness(0) invert(1)' : 'none'}
               transition="filter 0.3s"
@@ -160,7 +160,10 @@ function Header() {
             display={{ base: 'block', md: 'none' }}
             pb={5}
             borderTop="1px solid"
-            borderColor="brand.gray100"
+            borderColor={isTransparent ? 'whiteAlpha.200' : 'brand.gray100'}
+            bg={isTransparent ? 'rgba(8, 12, 22, 0.95)' : 'white'}
+            mx={-5}
+            px={5}
           >
             <VStack spacing={1} align="stretch" pt={3}>
               {visibleItems.map((item) => (
@@ -169,8 +172,11 @@ function Header() {
                   onClick={() => handleNavClick(item)}
                   fontSize="md"
                   fontWeight="500"
-                  color="brand.gray600"
-                  _hover={{ color: 'brand.gray900', bg: 'brand.gray50' }}
+                  color={isTransparent ? 'whiteAlpha.800' : 'brand.gray600'}
+                  _hover={{
+                    color: isTransparent ? 'white' : 'brand.gray900',
+                    bg: isTransparent ? 'whiteAlpha.100' : 'brand.gray50'
+                  }}
                   cursor="pointer"
                   py={2.5}
                   px={4}

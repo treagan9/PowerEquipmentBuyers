@@ -23,11 +23,11 @@ function Footer() {
           align={{ base: 'center', md: 'flex-start' }}
           gap={8}
         >
-          <VStack align={{ base: 'center', md: 'flex-start' }} spacing={3}>
+          <VStack align={{ base: 'center', md: 'flex-start' }} spacing={4}>
             <Image
               src="/logo-wide-transparent-background.png"
-              alt="Power Equipment Buyers"
-              h="30px"
+              alt="MWGridSolutions"
+              h="48px"
               objectFit="contain"
               filter="brightness(0) invert(1)"
             />
@@ -54,12 +54,12 @@ function Footer() {
               Contact
             </Text>
             <ChakraLink
-              href="mailto:info@powerequipmentbuyers.com"
+              href="mailto:info@mwgridsolutions.com"
               fontSize="sm"
               color="brand.gray400"
               _hover={{ color: 'white' }}
             >
-              info@powerequipmentbuyers.com
+              info@mwgridsolutions.com
             </ChakraLink>
           </VStack>
         </Flex>
@@ -73,7 +73,7 @@ function Footer() {
           gap={3}
         >
           <Text fontSize="xs" color="brand.gray500">
-            {year} Power Equipment Buyers. All rights reserved.
+            {year} MWGridSolutions. All rights reserved.
           </Text>
           <HStack spacing={5}>
             <ChakraLink fontSize="xs" color="brand.gray500" _hover={{ color: 'brand.gray300' }} href="#">

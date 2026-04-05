@@ -14,7 +14,8 @@ import {
   Heading,
   Divider,
   HStack,
-  Icon
+  Icon,
+  Spinner
 } from '@chakra-ui/react'
 import { HiOutlineShieldCheck } from 'react-icons/hi'
 import toast from 'react-hot-toast'
@@ -40,8 +41,13 @@ const INITIAL = {
 }
 
 // Format phone as (xxx) xxx-xxxx while typing
+// Handles +1 country code from browser autofill
 const formatPhone = (value) => {
-  const digits = value.replace(/\D/g, '').slice(0, 10)
+  let digits = value.replace(/\D/g, '')
+  if (digits.length === 11 && digits.startsWith('1')) {
+    digits = digits.slice(1)
+  }
+  digits = digits.slice(0, 10)
   if (digits.length === 0) return ''
   if (digits.length <= 3) return `(${digits}`
   if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`
@@ -213,7 +219,7 @@ function QuoteForm() {
                   placeholder="(555) 123-4567"
                   value={form.phone}
                   onChange={handleChange}
-                  autoComplete="tel"
+                  autoComplete="tel-national"
                   inputMode="numeric"
                 />
               </FormControl>
@@ -295,11 +301,22 @@ function QuoteForm() {
               size="lg"
               w="full"
               onClick={handleSubmit}
-              isLoading={loading}
-              loadingText="Submitting..."
+              isDisabled={loading}
               mb={3}
+              opacity={loading ? 0.85 : 1}
+              _active={{
+                transform: 'translateY(0)',
+                opacity: 0.9
+              }}
             >
-              Submit for Offer
+              {loading ? (
+                <HStack spacing={3}>
+                  <Spinner size="sm" color="white" speed="0.8s" />
+                  <Text>Submitting...</Text>
+                </HStack>
+              ) : (
+                'Submit for Offer'
+              )}
             </Button>
             <HStack justify="center" spacing={1.5}>
               <Icon as={HiOutlineShieldCheck} boxSize={3.5} color="brand.gray400" />

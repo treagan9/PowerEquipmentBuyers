@@ -1,5 +1,5 @@
 // src/components/contact/QuoteForm.jsx
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import {
   Box,
   Container,
@@ -39,19 +39,50 @@ const INITIAL = {
   description: ''
 }
 
+// Format phone as (xxx) xxx-xxxx while typing
+const formatPhone = (value) => {
+  const digits = value.replace(/\D/g, '').slice(0, 10)
+  if (digits.length === 0) return ''
+  if (digits.length <= 3) return `(${digits}`
+  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
+}
+
+// Basic email check
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
 function QuoteForm() {
   const [form, setForm] = useState(INITIAL)
   const [photos, setPhotos] = useState([])
   const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  // Spam protection - timestamp when form mounts
+  const loadedAt = useRef(Date.now())
 
   const handleChange = (e) => {
     const { name, value } = e.target
+    if (name === 'phone') {
+      setForm((prev) => ({ ...prev, phone: formatPhone(value) }))
+      return
+    }
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = async () => {
     if (!form.name || !form.email || !form.phone || !form.equipment_type) {
       toast.error('Please fill in all required fields.')
+      return
+    }
+
+    if (!isValidEmail(form.email)) {
+      toast.error('Please enter a valid email address.')
+      return
+    }
+
+    const digits = form.phone.replace(/\D/g, '')
+    if (digits.length < 10) {
+      toast.error('Please enter a valid 10-digit phone number.')
       return
     }
 
@@ -66,6 +97,9 @@ function QuoteForm() {
       formData.append('description', form.description)
       photos.forEach((photo) => formData.append('photos', photo))
 
+      // Spam protection fields
+      formData.append('_loaded', loadedAt.current.toString())
+
       const res = await fetch('/.netlify/functions/submit-lead', {
         method: 'POST',
         body: formData
@@ -76,12 +110,54 @@ function QuoteForm() {
       toast.success('Submission received. We will be in touch shortly.')
       setForm(INITIAL)
       setPhotos([])
+      setSubmitted(true)
     } catch (err) {
       console.error(err)
       toast.error('Something went wrong. Please try again or call us directly.')
     } finally {
       setLoading(false)
     }
+  }
+
+  if (submitted) {
+    return (
+      <Box py={{ base: 8, md: 14 }} bg="brand.gray50">
+        <Container maxW="720px" px={{ base: 5, md: 8 }}>
+          <Box
+            bg="white"
+            border="1px solid"
+            borderColor="brand.gray200"
+            borderRadius="2xl"
+            overflow="hidden"
+            boxShadow="0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 30px rgba(0, 0, 0, 0.06)"
+            textAlign="center"
+            py={{ base: 12, md: 16 }}
+            px={{ base: 6, md: 10 }}
+          >
+            <Icon as={HiOutlineShieldCheck} boxSize={12} color="brand.teal" mb={4} />
+            <Heading
+              fontFamily="heading"
+              fontSize="xl"
+              fontWeight="700"
+              color="brand.gray900"
+              mb={3}
+            >
+              Submission Received
+            </Heading>
+            <Text fontSize="sm" color="brand.gray500" maxW="400px" mx="auto" mb={6} lineHeight="1.7">
+              Thank you for your submission. Our buyer will review your equipment details and respond with an offer, typically within one hour during business hours.
+            </Text>
+            <Button
+              variant="outline"
+              size="md"
+              onClick={() => setSubmitted(false)}
+            >
+              Submit Another
+            </Button>
+          </Box>
+        </Container>
+      </Box>
+    )
   }
 
   return (
@@ -126,6 +202,7 @@ function QuoteForm() {
                   placeholder="Full name"
                   value={form.name}
                   onChange={handleChange}
+                  autoComplete="name"
                 />
               </FormControl>
               <FormControl isRequired>
@@ -136,6 +213,8 @@ function QuoteForm() {
                   placeholder="(555) 123-4567"
                   value={form.phone}
                   onChange={handleChange}
+                  autoComplete="tel"
+                  inputMode="numeric"
                 />
               </FormControl>
               <FormControl isRequired>
@@ -146,6 +225,7 @@ function QuoteForm() {
                   placeholder="you@company.com"
                   value={form.email}
                   onChange={handleChange}
+                  autoComplete="email"
                 />
               </FormControl>
               <FormControl isRequired>
@@ -162,6 +242,21 @@ function QuoteForm() {
                 </Select>
               </FormControl>
             </SimpleGrid>
+
+            {/* Honeypot - hidden from real users, only bots fill this */}
+            <Box
+              position="absolute"
+              left="-9999px"
+              aria-hidden="true"
+              tabIndex={-1}
+            >
+              <Input
+                name="website_url"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </Box>
           </Box>
 
           <Divider borderColor="brand.gray100" />

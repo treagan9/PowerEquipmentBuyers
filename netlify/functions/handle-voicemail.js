@@ -24,14 +24,17 @@ exports.handler = async (event) => {
 
     const twiml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Say voice="Polly.Matthew-Neural">You've reached MW Grid Solutions. Leave your name, number, and what equipment you're looking to sell. We'll get back to you fast.</Say>
+  <Say voice="Polly.Matthew-Neural">Thank you for calling M W Grid Solutions. We purchase power equipment across the western United States and we'd love to hear from you.</Say>
+  <Pause length="1"/>
+  <Say voice="Polly.Matthew-Neural">Please leave your name, callback number, and a brief description of the equipment you have available. We'll get back to you within one business day.</Say>
+  <Pause length="1"/>
+  <Say voice="Polly.Matthew-Neural">Leave your message after the tone.</Say>
   <Record
     maxLength="120"
     playBeep="true"
     recordingStatusCallback="${SITE_URL}/.netlify/functions/handle-recording"
     recordingStatusCallbackMethod="POST"
   />
-  <Say voice="Polly.Matthew-Neural">No message received. Visit mwgridsolutions.com to submit your equipment details online.</Say>
 </Response>`
 
     return {
